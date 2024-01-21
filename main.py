@@ -10,6 +10,7 @@ import json
 login_url = 'https://watch.freecast.com/login/?next=/channels/'
 credentials_path = 'credentials.txt'
 driver_path = 'geckodriver'
+firefox_executable_path = None
 channels_json_path = 'channels.json'
 
 channel_config_path = 'channel-config.json' 
@@ -38,6 +39,8 @@ def selenium_magic():
 
     service = Service(executable_path=driver_path)
     options = webdriver.FirefoxOptions()
+    if firefox_executable_path:
+        options.binary_location = firefox_executable_path
     driver = webdriver.Firefox(service=service, options=options)
 
     login = read_credentials(credentials_path)
