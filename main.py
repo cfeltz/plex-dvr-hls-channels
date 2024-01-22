@@ -11,7 +11,7 @@ login_url = 'https://watch.freecast.com/login/?next=/channels/'
 credentials_path = 'credentials.txt'
 driver_path = 'geckodriver'
 firefox_executable_path = None
-channels_json_path = 'channels.json'
+channels_json_path = '../plex-dvr-hls/channels.json'
 
 channel_config_path = 'channel-config.json' 
 
@@ -112,7 +112,7 @@ class Channel:
 
     def __init__(self, unwrapped_json):
         self._name = unwrapped_json['name']
-        self._id = unwrapped_json['id']
+        self._id = int(unwrapped_json['id'])
         self._web_url = unwrapped_json['web_url']
         self._stream_url = ''
 
@@ -132,7 +132,7 @@ class Channel:
         return { 
                 'name': self._name,
                 'url':  self._stream_url,
-                'id':   self._id
+                'id':   int(self._id)
             }
 
 
