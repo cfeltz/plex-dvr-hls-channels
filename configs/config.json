@@ -1,0 +1,6 @@
+{
+	"driver_path": "geckodriver",
+	"channels_json_path": "test/channels.json",
+	"web_config_path": "configs/channel-config.json",
+	"firefox_executable_path": null
+}
