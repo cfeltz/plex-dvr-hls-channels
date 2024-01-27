@@ -27,6 +27,10 @@ def main():
 
     return "fortnite"
 
+
+
+def load_settings(settings_config_path):
+
 def create_channels(channel_config_path):
 
     with open(channel_config_path, 'r') as channel_config:

@@ -1,0 +1,15 @@
+[
+	{
+		"username": "",
+		"password": "",
+		"login_url": "",
+
+		"channels": [
+			{
+				"name": "Curiousity Now",
+				"web_url" : "https://watch.freecast.com/channels/free/featured/cms-curiosity-now/",
+				"id"  : "50"
+			}
+		]
+	}
+]
