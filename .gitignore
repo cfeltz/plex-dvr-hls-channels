@@ -1,5 +1,5 @@
-credentials.txt
+test/
+configs/
+temp.txt
 geckodriver
-channel-config-old.json
-channels.json
 venv
