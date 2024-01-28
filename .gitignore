@@ -1,4 +1,5 @@
 test/
+configs/
 temp.txt
 geckodriver
 venv

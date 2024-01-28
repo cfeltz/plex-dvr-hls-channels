@@ -1,16 +1,16 @@
 [
 	{
 		"credentials": {
-			"username": "",
-			"password": "",
-			"login_url": ""
+			"username": "meltz24@outlook.com",
+			"password": "ShoppingFishing2$",
+			"login_url": "https://watch.freecast.com/login/?next=/channels/"
 		},
 
 		"channels": [
 			{
-				"name": "",
-				"web_url" : "",
-				"id"  : ""
+				"name": "Curiousity Stream",
+				"web_url" : "https://watch.freecast.com/channels/free/featured/cms-curiosity-now",
+				"id"  : "50"
 			}
 		]
 	}
