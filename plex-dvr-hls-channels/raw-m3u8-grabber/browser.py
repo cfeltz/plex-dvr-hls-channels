@@ -4,13 +4,17 @@ from common.credentials import Credentials
 class Browser:
 
     def __init__(self):
-        self.credentials = None
-        self.channels = None
-    
-    def load_config(self, config):
-        self.credentials = Credentials(config['credentials'])
+        self._credentials = None
+        self._channels = None
 
-        channel_configs = config['channels']
+    @property
+    def credentials(self):
+        return self._credentials
+    
+    def create_channels(self, jsonObject):
+        self.credentials = Credentials(jsonObject['credentials'])
+
+        channel_configs = jsonObject['channels']
 
         self.channels = []
         for channel_config in channel_configs:

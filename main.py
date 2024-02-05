@@ -5,7 +5,7 @@ def main():
     grabber = Grabber()
     grabber.load_config('configs/config.json')
 
-    grabber.load_web_config()
+    grabber.create_browsers()
 
     grabber.do_work()
 
