@@ -7,6 +7,25 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.service import Service
 
 
+def get_shortest_network_request(requests):
+    shortest_url = requests[0]
+    for request in requests[1:]:
+        if len(request['name']) < len(shortest_url['name']):
+            shortest_url = request
+
+    return shortest_url['name']
+
+
+def filter_requests(requests, regex):
+    filtered = []
+
+    for request in requests:
+        if request['name'] and re.match(regex, request['name']):
+            filtered.append(request)
+
+    return filtered
+
+
 class RequestService:
 
     def __init__(self, config_path):
@@ -37,17 +56,23 @@ class RequestService:
         # let the login flow finish
         time.sleep(5)
 
-    def go_to_channels(self, channels):
+    def get_stream_urls(self, channels):
         for channel in channels:
             self.go_to_url(channel)
             if not channel.stream_url():
-                channel.stream_url = self._get_shortest_network_request(channel.regex)
+                channel.stream_url = self._get_stream_url(channel)
                 continue
+
+    def _get_stream_url(self, channel):
+        network_requests = self.get_network_requests_from_driver()
+        network_requests = filter_requests(network_requests, channel.regex)
+        shortest_request = get_shortest_network_request(network_requests)
+        return shortest_request
 
     def go_to_url(self, channel):
         self._driver.get(channel.web_url)
 
-    def get_shortest_network_request(self, regex, wait_for_network_logs=8):
+    def get_network_requests_from_driver(self, wait_for_network_logs=8):
         time.sleep(wait_for_network_logs)
         # dump the logs
         network_requests = self._driver.execute_script(
@@ -59,15 +84,7 @@ class RequestService:
             "{}; return network;"
         )
 
-        # filter the urls for the links that we care about
-        network_requests = filter_requests(regex, network_requests)
-
-        shortest_url = network_requests[0]
-        for request in network_requests[1:]:
-            if len(request['name']) < len(shortest_url['name']):
-                shortest_url = request
-
-        return shortest_url['name']
+        return network_requests
 
 
 class StreamEastService(Service):
@@ -76,12 +93,4 @@ class StreamEastService(Service):
         super().__init__()
 
 
-def filter_requests(regex, requests):
-    filtered = []
-
-    for request in requests:
-        if request['name'] and re.match(regex, request['name']):
-            filtered.append(request)
-    
-    return filtered
 

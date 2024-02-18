@@ -33,9 +33,9 @@ def reroute(channel_number):
     if app.previous_channel_number != channel_number:
         app.service.go_to_url()
         # write the shit to click the player here
-        reroute_url = app.service.get_shortest_network_request(app.channels[channel_number].regex)
+        reroute_url = get_shortest_network_request(app.channels[channel_number].regex)
     else:
-        reroute_url = app.service.get_shortest_network_request(app.channels[channel_number].regex,
+        reroute_url = get_shortest_network_request(app.channels[channel_number].regex,
                                                                wait_for_network_logs=2)
 
     app.previous_channel_number = channel_number
