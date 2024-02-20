@@ -69,3 +69,6 @@ class RequestServiceConfig(Config):
 
 
 class ReRouterConfig(Config):
+    
+    def __init__(self):
+        super().__init__()

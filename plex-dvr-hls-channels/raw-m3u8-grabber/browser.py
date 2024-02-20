@@ -10,13 +10,17 @@ class Browser:
     @property
     def credentials(self):
         return self._credentials
+
+    @property
+    def channels(self):
+        return self._channels
     
     def create_channels(self, jsonObject):
-        self.credentials = Credentials(jsonObject['credentials'])
+        self._credentials = Credentials(jsonObject['credentials'])
 
         channel_configs = jsonObject['channels']
 
-        self.channels = []
+        self._channels = []
         for channel_config in channel_configs:
             self.channels.append(Channel(channel_config))
     

@@ -26,8 +26,7 @@ class Grabber:
             if browser.credentials:
                 service.login(browser.credentials)
 
-            for channel in browser.channels:
-                service.go_to_channel(channel)
+            service.get_stream_urls(browser.channels)
 
     def get_channels_json(self):
         channel_json_list = []

@@ -10,7 +10,6 @@ class ReRouter(FastAPI):
 
 
         self.channels = {}
-
         self._previous_channel_number = None
 
     @property

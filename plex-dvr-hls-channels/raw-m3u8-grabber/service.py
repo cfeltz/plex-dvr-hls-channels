@@ -69,8 +69,8 @@ class RequestService:
         shortest_request = get_shortest_network_request(network_requests)
         return shortest_request
 
-    def go_to_url(self, channel):
-        self._driver.get(channel.web_url)
+    def go_to_url(self, web_url):
+        self._driver.get(web_url)
 
     def get_network_requests_from_driver(self, wait_for_network_logs=8):
         time.sleep(wait_for_network_logs)
