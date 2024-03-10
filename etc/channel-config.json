@@ -1,0 +1,13 @@
+[
+	{
+		"name": "Curiousity Stream",
+		"url": "https://watch.freecast.com/channels/free/featured/cms-curiosity-now",
+		"number": "50"
+	},
+	{
+		"name": "Sodapoppin",
+		"url": "https://www.twitch.tv/caseoh_",
+		"number": "75",
+		"regex": "video-weaver"
+	}
+]

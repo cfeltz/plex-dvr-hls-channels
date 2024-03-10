@@ -1,5 +1,9 @@
-test/
-configs/
-temp.txt
+build/
+etc/m3u8s/
 geckodriver
-venv
+plex_dvr_hls_channels.egg-info/
+plex_dvr_hls_channels.txt
+temp.txt
+test/
+venv/
+config.conf
