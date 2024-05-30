@@ -1,2 +1,9 @@
-selenium
-fastapi
+selenium~=4.21.0
+fastapi~=0.111.0
+oslo.config
+setuptools~=70.0.0
+uvicorn~=0.29.0
+requests
+selenium-wire
+blinker<1.8.0
+Brotli~=1.1.0

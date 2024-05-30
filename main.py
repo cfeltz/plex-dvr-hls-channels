@@ -1,15 +1,25 @@
-from common.grabber import Grabber
+import logging
+import uvicorn
+import threading
+
+from plex_dvr_hls_channels import utils
+
+import plex_dvr_hls_channels.conf
+
+CONF = plex_dvr_hls_channels.conf.CONF
+app = utils.app
+logger = logging.getLogger(__name__)
+
 
 def main():
+    CONF(default_config_files=['config.conf'])
 
-    grabber = Grabber()
-    grabber.load_config('configs/config.json')
+    utils.log_setup()
+    utils.create_channels()
+    cleanup_thread = threading.Thread(target=utils.cleanup)
+    cleanup_thread.start()
 
-    grabber.create_browsers()
-
-    grabber.do_work()
-
-    print("fortnite")
+    uvicorn.run(app, host='127.0.0.1', port=CONF.plex.localhost_port)
 
 
 if __name__ == '__main__':
